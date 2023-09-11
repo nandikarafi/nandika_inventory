@@ -6,4 +6,5 @@ class Item(models.Model):
     name = models.CharField(max_length=255)
     ammount = models.IntegerField()
     description = models.TextField()
+    price = models.IntegerField()
     
