@@ -142,7 +142,7 @@ https://sectask-nandika.adaptable.app/main/
 
 2.Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
-![Bagan](Bagan.png "Bagan keterkaitan dalam MVT")
+![Bagan](https://drive.google.com/file/d/1rKfdSAt_IWfrR-kMPPJl1hVLSdFgeX6_/view?usp=sharing "Bagan keterkaitan dalam MVT")
 
 
 Pada bagan, kita dapat melihat keterkaitan antara urls.py, views.py, dan models.py. urls.py meneruskan request yang diminta client ke views.py, sedangkan views.py mengakses models.py untuk mengambil data-data yang akan diperlukan dan mengakses main.html untuk mengetahui tampilan web. Setelah views.py mengakses models.py dan main.html, views.py akan mengirimkan apa yang telah diakses kepada client melalui url yang direquest oleh client. 
