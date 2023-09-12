@@ -1,3 +1,5 @@
+tautan : https://sectask-nandika.adaptable.app/main/
+
 1.Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step !
 Pertama, sebelum proyek Django dibuat, saya terlebih dahulu membuat direktori baru dengan nama nandika_inventory. Direktori tersebut saya buat untuk menyimpan data-data tugas 2 saya. 
 
