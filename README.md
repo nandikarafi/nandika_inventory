@@ -66,12 +66,12 @@ Dari kode tersebut saya mendefinisikan Item sebagai nama model. Lalu name, amoun
 Setelah itu, saya membuat sebuah fungsi pada views.py yang bertujuan untuk dikembalikan ke dalam sebuah template HTML yang menampilkan aplikasi yang saya buat. Saya mengisi kode berikut pada berkas views.py
 from django.shortcuts import render
 
-# Create your views here.
+#Create your views here.
 def show_main(request):
     context = {
         'name': 'Tas Sekolah',
         'harga': 'Rp. 50.000',
-        'description': 'Tas merupakan jenis ransel yang diproduksi di Indonesia\nTas memiliki banyak varian warna\nTerdapat bonus berupa jas hujan sebagai pelindung tas dari hujan ',
+        'description': 'Tas merupakan jenis ransel yang diproduksi di Indonesia. Tas memiliki banyak varian warna. Terdapat bonus berupa jas hujan sebagai pelindung tas dari hujan ',
         'amount': 25,
     }
 
@@ -125,17 +125,17 @@ git remote add origin “link github saya”
 git push -u origin main
 
 Agar tampilan saya dapat dilihat oleh orang lain, saya harus melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat. Adapun cara melakukan deployment ke Adaptable adalah sebagai berikut.
-•	Pertama, saya harus membuat akun adaptable,io menggunakan akun GitHub
-•	Setelah itu login, dan pilih New App. Lalu pilih Connect an Existing Repository.
-•	Lalu saya pilih repository nandika_inventory yang isi-isinya merupakan berkas-berkas yang saya push dari direktori saya
-•	Kemudian saya memilih branch main
-•	Setelah itu, saya memilih Python App Template sebagai template deployment
-•	Lalu saya memilih PostgreSQL sebagai tipe basis data yang akan digunakan
-•	Lalu saya menyesuaikan versi python yang ada di komputer saya. Sebelum mengecek saya harus nyalan virtual environment dan jalankan perintah python –version untuk mengetahui versi python saya dan versi python saya 3.10
-•	Pada bagian Start Command, saya memasukkan perintah python manage.py migrate&& gunicorn nandika_project.wsgi.
-•	Setelah itu saya memberi nama aplikasi sectask-nandika yang akan menjadi domain situs web
-•	Kemudian saya mencentang bagian HTTP Listener on PORT dan klik Deploy App untuk memulai proses deployment aplikasi
-•	Jika proses deployment aplikasi berhasil, saya dapat mengecek tampilan saya melalui 
+1.Pertama, saya harus membuat akun adaptable,io menggunakan akun GitHub
+2.Setelah itu login, dan pilih New App. Lalu pilih Connect an Existing Repository.
+3.Lalu saya pilih repository nandika_inventory yang isi-isinya merupakan berkas-berkas yang saya push dari direktori saya
+4.Kemudian saya memilih branch main
+5.Setelah itu, saya memilih Python App Template sebagai template deployment
+6.Kemudian saya memilih PostgreSQL sebagai tipe basis data yang akan digunakan
+7.Lalu saya menyesuaikan versi python yang ada di komputer saya. Sebelum mengecek saya harus nyalan virtual environment dan jalankan perintah python –version untuk mengetahui versi python saya dan versi python saya 3.10
+8.Pada bagian Start Command, saya memasukkan perintah python manage.py migrate&& gunicorn nandika_project.wsgi.
+9.Setelah itu saya memberi nama aplikasi sectask-nandika yang akan menjadi domain situs web
+10.Kemudian saya mencentang bagian HTTP Listener on PORT dan klik Deploy App untuk memulai proses deployment aplikasi
+11.Jika proses deployment aplikasi berhasil, saya dapat mengecek tampilan saya melalui 
 https://sectask-nandika.adaptable.app/main/
 
 2.Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
@@ -153,11 +153,11 @@ MVT adalah singkatan dari Model, View, dan Template. Arsitektur MVT memiliki kem
 MVVM adalah singkatan dari Model-View-ViewModel. MVVM merupakan gabungan dari MVC dan MVT. Pada awalnya, arsitektur MVVM digunakan di dalam Windows Presentation Foundation dan Silverlight. Pada arsitektur MVVM, view tidak bertanggung jawab untuk menampilkan data ke user. View bertanggung jawab untuk menampilkan data yang disediakan oleh ViewModel.
 
 Beberapa perbedaan antara arsitektur MVC, MVT, dan MVVM adalah :
-•	Pada arsitektur MVC memiliki controller, sedangkan Arsitektur MVT dan MVVM tidak memiliki controller.
-•	Pada arsitektur MVC, view dapat mengakses model secara langsung, sedangkan arsitektur MVVM, view mengakses data melalui ViewModel. 
-•	Arsitektur MVC dan MVT tidak memiliki ViewModel, sedangkan MVVM memiliki VidewModel.
-•	Arsitektur MVVM memiliki konsep binding dua arah, di mana perubahan pada view akan memengaruhi ViewModel dan sebaliknya. Sedangkan arsitektur MVC dan MVT tidak.
-•	Arsitektur MVT, template digunakan untuk mengatur tampilan halaman web, sedangkan pada arsitektur MVC dan MVVM, view yang mengatur tampilan aplikasi.
+.> Pada arsitektur MVC memiliki controller, sedangkan Arsitektur MVT dan MVVM tidak memiliki controller.
+.> Pada arsitektur MVC, view dapat mengakses model secara langsung, sedangkan arsitektur MVVM, view mengakses data melalui ViewModel. 
+.> Pada arsitektur MVC dan MVT tidak memiliki ViewModel, sedangkan MVVM memiliki VidewModel.
+.> Pada arsitektur MVVM memiliki konsep binding dua arah, di mana perubahan pada view akan memengaruhi ViewModel dan sebaliknya. Sedangkan .arsitektur MVC dan MVT tidak.
+.> Pada arsitektur MVT, template digunakan untuk mengatur tampilan halaman web, sedangkan pada arsitektur MVC dan MVVM, view yang mengatur tampilan aplikasi.
 
 Referensi :
 Musyaffa, I. 2023. MVC vs MVP vs MVVM : Apa Perbedaannya & Mana yang terbaik diantara ketiganya?. agus-hermanto.com. Diakses dari
