@@ -1,3 +1,7 @@
+Nandika Rafi Atallah
+PBP C
+2206082745
+
 tautan : https://sectask-nandika.adaptable.app/main/
 
 1.Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step !
