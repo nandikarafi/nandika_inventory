@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,8 +57,29 @@ color: black;
   <p id="text">{{ name }}</p>
   <h5 id="text">Kelas : </h5>
   <p id="text">{{ kelas }}</p>
-  </p>
+  <table>
+    <tr>
+        <h5>Silahkan Input Data</h5>
+    </tr>
 
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for product in products %}
+        <tr>
+            <p>{{product.name}} > {{product.amount}}, ({{product.price}}) :  {{product.description}}</p>
+        </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
 </div>
+
 </body>
 </html>
+{% endblock content %}
