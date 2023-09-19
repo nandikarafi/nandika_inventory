@@ -174,6 +174,7 @@ Musyaffa, I. 2023. MVC vs MVP vs MVVM : Apa Perbedaannya & Mana yang terbaik dia
 
 Tugas 3
 1. Apa perbedaan antara form POST dan form GET dalam Django?
+
 Terdapat beberapa perbedaan antara form POST dan form GET dalam Django adalah sebagai berikut.
 Yang pertama adalah metode pengirim data. Pada form POST, data dikirim ke server sebagai bagian dari permintaan HTTP, sedangkan pada form GET, data dikirim sebagai bagian dari URL dalam string query. 
 Yang kedua adalah tampilan data. Pada form POST, data tidak terlihat pada URL yang membuat data lebih aman, sedangkan pada form GET, data terlihat pada URL yang membuat data sensitif tidak cocok untuk menggunakan form GET.
@@ -181,9 +182,11 @@ Yang ketiga adalah caching. Pada form POST, data yang dikirim tidak akan di-cach
 Yang keempat adalah idempotensi.Idempotensi berarti melakukan permintaan yang sama beberapa kali tidak mengubah keadaan server. Pada form POST, permintaan POST tidak dianggap Idempoten yang berarti akan mengubah keadaan server. Hal ini dikarenakan form POST digunakan untuk membuat atau memperbarui entitas, sedangkan pada form GET, permintaan dianggap sebagai Idempoten yang berarti tidak mengubah keadaan server. Form GET seharusnya hanya digunakan untuk membaca data bukan untuk membuat atau memperbaruinya.
 
 2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+
 Perbedaan utama antara XML, JSON, dan HTML dalam konteks pengirim data terletak pada tujuannya. Tujuan dari XML adalah pertukaran data antara sistem dan platform yang berbeda sehingga struktur datanya sangat kompleks, tetapi masih tetap bisa dibaca. XML memiliki markup yang lebih lengkap daripada JSON. Tujuan dari JSON adalah pertukaran data antara aplikasi web dan server. Struktur data dan kode yang digunakan dalam JSON tidak begitu kompleks dan sangat mudah untuk dimengerti. JSON lebih fokus pada struktur data berbeda dengan XML yang lebih fokus pada markup. Tujuan dari HTML adalah untuk membuat tampilan halaman web dan menyusun konten yang dapat dilihat oleh pengguna di browser web. HTML bukan format data yang dirancang untuk pertukaran data, tetapi lebih sebagai bahasa untuk menyampaikan informasi. 
 
 3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+
 JSON sering digunakan dalam pertukaran data antara aplikasi web modern karena stuktur datanya ringan yang semi terstruktur sehingga memiliki fleksibelitas yang tinggi dalam melakukan proses transfer data. JSON memiliki kompatibilitas dengan berbagai bahasa pemrograman baik itu JavaScript, Java, Python, C++, dan sebagainya.  Selain itu, JSON mudah diintegrasikan dengan berbagai sistem baik perangkat web, perangkat seluler, perangkat IoT (Internet of Things), serta layanan cloud seperti SaaS (Software as a Service) dan PaaS (Platform as a Service).
 
 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step 
@@ -201,6 +204,8 @@ Selanjutnya, saya akan mengembalikan data dalam bentuk JSON. Dengan cara yang sa
 
 Selanjutnya saya akan mengembalikan data berdasarkan ID baik dalam bentuk XML ataupun JSON. Pertama, saya membuka views.py yang ada pada folder main dan buat sebuah fungsi dengan parameter request yaitu show_xml_by_id untuk XML dan show_json_by_id untuk JSON. Setelah itu di dalam setiap fungsi, tambahkan data = Item.objects.filter(pk=id). Dibawahnya ditambahkan kode return HttpResponse(serializers.serialize("xml", data), content_type="application/xml") untuk XML dan return HttpResponse(serializers.serialize("json", data), content_type="application/json") untuk JSON. Kemudian, tambahkan import show_xml_by_id dan show_json_by_id pada file urls.py yang ada pada folder main. Kemudian, saya menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi yaitu path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id') dan path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),. Setelah itu, saya menjalankan perintah python manage.py runserver dan membuka http://localhost:8000/xml/[id] dan http://localhost:8000/xml/[id] . id berisi sebuah bilangan 1,2,3,..n dan seterusnya sesuai dengan berapa n data yang saya input. 
 
+Setelah berhasil melakukan step-step tersebut, saya tidak lupa untuk melakukan add, commit, dan push ke repository github dan juga mematikan virtual environment.
+
 5. Adapun kelima URL berhasil saya akses di Postman dan saya akan melampirkan dokumentasinya
 Berikut adalah screenshoot dari hasil akses URL pada Postman
 A. HTML
@@ -217,3 +222,10 @@ D. XML by ID
 
 E. JSON by ID
 ![json by id](Screenshoot_JSON_id.png "Views JSON by ID")
+
+
+Referensi :
+Patria, R. 2021. Yuk Kenalan Dengan JSON: Fungsi & Struktur Dalam Pemrograman. domainesia.com. Diakses dari
+https://www.domainesia.com/berita/json/
+Setiawan, R. 2021. Apa itu JSON? Simak Perbedaannya dengan XML : Apa Perbedaannya & Mana yang terbaik diantara ketiganya?. dicoding.com. Diakses dari
+https://www.dicoding.com/blog/apa-itu-json/
