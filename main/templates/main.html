@@ -19,9 +19,6 @@ h2 {
     color: chocolate;
 }
 
-.center-text {
-  text-align: center;
-}
 
 body {
     background-color: peachpuff; 
@@ -29,7 +26,7 @@ body {
 
 h5 {
     color: chocolate;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 p {
@@ -46,27 +43,64 @@ color: black;
     text-align: center;
   }
 
+.product-table {
+    border-collapse: collapse; 
+    width: 75%;
+    margin: 0 auto;
+    border-color: brown;
+
+}
+
+.product-table th, .product-table td {
+    border: 1px solid brown; 
+    padding: 8px; 
+    text-align: center;
+}
+
+.table-container {
+    text-align: center; 
+}
+
+.product-table th {
+    color: chocolate; 
+    background-color: peachpuff;
+}
+
+.product-table td {
+    background-color: peachpuff; 
+}
+
 </style>
 </head>
 <body>
 
-<div class="center-text">
+<div class="table-container">
   <h1 id="text"><b>Nandika's Inventories</b></h1>
-  <h2 id="text">Sedia Perlengkapan Sekolah</h2>
+  <h2 id="text">Perlengkapan Sekolah Nandika</h2>
   <h5 id="text">Nama Owner : </h5>
   <p id="text">{{ name }}</p>
   <h5 id="text">Kelas : </h5>
   <p id="text">{{ kelas }}</p>
-  <table>
+  <table class="product-table">
     <tr>
-        <h5>Silahkan Input Data</h5>
+        <h5>Tabel Penyimpanan Nandika's Inventories</h5>
     </tr>
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
+    <thead>
+      <tr>
+          <th>Nama Barang</th>
+          <th>Jumlah</th>
+          <th>Harga</th>
+          <th>Deskripsi</th>
+      </tr>
+  </thead>
     {% for product in products %}
         <tr>
-            <p>{{product.name}} > {{product.amount}}, ({{product.price}}) :  {{product.description}}</p>
+          <td>{{ product.name }}</td>
+          <td>{{ product.amount }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.description }}</td>
         </tr>
     {% endfor %}
 </table>

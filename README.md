@@ -1,7 +1,7 @@
 Nandika Rafi Atallah
 PBP C
 2206082745
-
+Tugas 2
 tautan : https://sectask-nandika.adaptable.app/main/
 
 1.Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step !
@@ -172,3 +172,48 @@ Musyaffa, I. 2023. MVC vs MVP vs MVVM : Apa Perbedaannya & Mana yang terbaik dia
  https://agus-hermanto.com/blog/detail/mvc-vs-mvp-vs-mvvm-apa-perbedaannya-mana-yang-terbaik-diantara-ketiganya-a
 
 
+Tugas 3
+1. Apa perbedaan antara form POST dan form GET dalam Django?
+Terdapat beberapa perbedaan antara form POST dan form GET dalam Django adalah sebagai berikut.
+Yang pertama adalah metode pengirim data. Pada form POST, data dikirim ke server sebagai bagian dari permintaan HTTP, sedangkan pada form GET, data dikirim sebagai bagian dari URL dalam string query. 
+Yang kedua adalah tampilan data. Pada form POST, data tidak terlihat pada URL yang membuat data lebih aman, sedangkan pada form GET, data terlihat pada URL yang membuat data sensitif tidak cocok untuk menggunakan form GET.
+Yang ketiga adalah caching. Pada form POST, data yang dikirim tidak akan di-cache oleh browser atau server proxy, sedangkan pada form GET, data yang dikirim dapat di-cache oleh browser atau server proxy karena data tersebut ada pada URL.
+Yang keempat adalah idempotensi.Idempotensi berarti melakukan permintaan yang sama beberapa kali tidak mengubah keadaan server. Pada form POST, permintaan POST tidak dianggap Idempoten yang berarti akan mengubah keadaan server. Hal ini dikarenakan form POST digunakan untuk membuat atau memperbarui entitas, sedangkan pada form GET, permintaan dianggap sebagai Idempoten yang berarti tidak mengubah keadaan server. Form GET seharusnya hanya digunakan untuk membaca data bukan untuk membuat atau memperbaruinya.
+
+2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+Perbedaan utama antara XML, JSON, dan HTML dalam konteks pengirim data terletak pada tujuannya. Tujuan dari XML adalah pertukaran data antara sistem dan platform yang berbeda sehingga struktur datanya sangat kompleks, tetapi masih tetap bisa dibaca. XML memiliki markup yang lebih lengkap daripada JSON. Tujuan dari JSON adalah pertukaran data antara aplikasi web dan server. Struktur data dan kode yang digunakan dalam JSON tidak begitu kompleks dan sangat mudah untuk dimengerti. JSON lebih fokus pada struktur data berbeda dengan XML yang lebih fokus pada markup. Tujuan dari HTML adalah untuk membuat tampilan halaman web dan menyusun konten yang dapat dilihat oleh pengguna di browser web. HTML bukan format data yang dirancang untuk pertukaran data, tetapi lebih sebagai bahasa untuk menyampaikan informasi. 
+
+3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+JSON sering digunakan dalam pertukaran data antara aplikasi web modern karena stuktur datanya ringan yang semi terstruktur sehingga memiliki fleksibelitas yang tinggi dalam melakukan proses transfer data. JSON memiliki kompatibilitas dengan berbagai bahasa pemrograman baik itu JavaScript, Java, Python, C++, dan sebagainya.  Selain itu, JSON mudah diintegrasikan dengan berbagai sistem baik perangkat web, perangkat seluler, perangkat IoT (Internet of Things), serta layanan cloud seperti SaaS (Software as a Service) dan PaaS (Platform as a Service).
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step 
+
+Saya akan menjelaskan bagaimana cara saya mengimplementasikan checklist tersebut secara step by step dengan penjelasan sebagai berikut.
+Pertama, sebelum membuat input form untuk menambahkan objek model, saya harus mengubah kode yang ada pada urls.py pada folder nandika_project. Adapun sebelum mengubah kode, seperti biasa, saya harus mengaktifkan virtual environment saya dengan menjalankan perintah env\Scripts\activate.bat pada terminal.Setelah itu, saya harus mengubah path ‘main/’ menjadi ‘’ yang ada pada list urlpatterns sehingga saya dapat mengakses http://localhost:8000/ yang sebelumnya http://localhost:8000/main saat menjalankan python manage.py runserver di terminal. 
+
+Setelah itu, saya harus mengimplementasi skeleton sebagai kerangka views dari situs web yang saya buat. Tujuan dibuatnya kerangka views ini adalah untuk memastikan adanya konsistensi dalam desain situs web kita serta memperkecil kemungkinan terjadinya redudansi kode. Kemudian saya membuat folder baru pada root folder nandika_inventory bernama templates. Di dalam folder ini, saya akan menyimpan file yang bernama base.html yang isinya dapat dilihat pada file saya tersebut. Tujuan dari file base.html yang saya buat adalah sebagai template dasar yang dapat digunakan sebagai kerangka umum untuk halaman web lainnya di dalam proyek saya. Setelah membuat file base.html, saya memperbarui file settings.py yang ada pada nandika_project dan menambah sesuatu yang ada pada variable TEMPLATES. Saya mengubah isi ‘DIRS’ menjadi  'DIRS': [BASE_DIR / 'templates']. Setelah itu saya menambahkan {% extends 'base.html' %} pada file main.html yang berada pada folder templates dengan tujuan menjadikan base.html sebagai template utama. 
+
+Setelah itu, saya baru dapat membuat form input Data. Saya harus membuat file yaitu forms.py pada folder main. Lalu untuk isinya dapat dilihat pada file saya. Model untuk menunjukkan model yang digunakan untuk form. Ketika form disimpan, form akan disimpan pada objek Item yang telah saya definisikan pada models.py. Fields adalah field dari model Item yang digunakan untuk form.  Kemudian, pada file views.py saya menambahkan beberapa import pada bagian atas yaitu from django.http import HttpResponseRedirect , from main.forms import ProductForm, dan from django.urls import reverse. Setelah itu, saya menambahkan fungsi baru pada file views.py yaitu create_product yang dapat dilihat pada file saya tersebut. form = ProductForm(request.POST or None) digunakan untuk membuat ProductForm baru dengan memasukkan QueryDict berdasarkan input dari user pada request.POST. Adapun form.is_valid() digunakan untuk memvalidasi input. form.save() digunakan untuk menyimpan data dari form tersebut dan return HttpResponseRedirect(reverse('main:show_main')) digunakan untuk melakukan redirect data pada form berhasil disimpan. Setelah itu saya menambahkan beberapa hal pada fungsi show_main yang ada di views.py. Saya menambahkan products = Item.objects.all() untuk mengambil seluruh object Product yang tersimpan pada database. Di dalam context saya juga menambahkan ‘products’ : products . Setelah itu, saya menambahkan import pada urls.py yang ada pada folder main yaitu impor fungsi create_product sehingga instruksi impornya menjadi  from main.views import show_main, create_product. Setelah itu, saya menambahkan path url ke dalam urlpatterns yang ada pada file urls.py di folder main agar program dapat mengakses fungsi yang sudah di-import sebelumnya dengan menambahkan path('create-product', create_product, name='create_product'),. Setelah itu, saya membuat HTML baru dengan nama create_product.html pada direktori main/templates. Kodenya dapat dilihat pada file saya tersebut. Dalam penjelasannya, <form method=”POST”> berfungsi untuk menandakan block untuk form dengan metode POST. {% csrf_token %} adalah token security yang akan di-generate secara otomatis oleh Django untuk mencegah serangan yang membahayakan. {{ form.as_table }} berfungsi untuk menampilkan fields form yang sudah dibuat pada form sebagai table. Bagian <input type="submit" value="Add Product"/> fungsinya untuk tombol submit dan mengirimkan request ke view.  Setelah itu, saya menambahkan beberapa hal pada main.html saya yaitu button dan tabel input saya yang kodenya dapat dilihat di file saya. Kemudian, saya dapat menjalankan python manage.py runserver dan membuka http://localhost:8000 untuk melihat apakah berhasil atau tidak.
+
+Selanjutnya, saya akan mengembalikan data dalam bentuk XML. Saya akan menambahkan from django.http import HttpResponse dan from django.core import serializers ke file views.py yang ada di folder main. Kemudian, pada file tersebut saya menambahkan fungsi def show_xml(request) yang isinya adalah data = Item.objects.all() . Setelah itu, saya menambahkan return function berupa HttpResponse dengan kode berikut return HttpResponse(serializers.serialize("xml", data), content_type="application/xml") . Pada kode tersebut, import serializers digunakan untuk mentranslasi objek model menjadi format lain seperti XML. Selanjutnya, saya membuka urls.py yang berada di folder main dan menambahkan impor fungsi show_xml. Saya juga menambahkan path('xml/', show_xml, name='show_xml'), pada urlpatterns yang terletak di file urls.py yang ada di folder main. Setelah itu, saya dapat menjalankan python manage.py runserver di terminal dan membuka http://localhost:8000/xml untuk melihat tampilan XML saya. 
+
+Selanjutnya, saya akan mengembalikan data dalam bentuk JSON. Dengan cara yang sama seperti sebelumnya, saya membuka file views,py yang ada pada folder main dan menambahkan fungsi show_json dengan parameter request yang isi kodenya adalah data = Item.objects.all() . Lalu dibawahnya, saya menambahkan return function yaitu  return HttpResponse(serializers.serialize("json", data), content_type="application/json") yang berisi data hasil query yang sudah diserialisasi menjadi JSON. Setelah itu, saya menambah import show_json pada file urls.py yang ada di folder main agar dapat mendapat akses fungsi tersebut. Setelah itu, saya menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi dengan kode path('json/', show_json, name='show_json'), . Setelah itu, saya menjalankan runserver python lagi dan membuka http://localhost:8000/json untuk mengecek tampilan JSON. 
+
+Selanjutnya saya akan mengembalikan data berdasarkan ID baik dalam bentuk XML ataupun JSON. Pertama, saya membuka views.py yang ada pada folder main dan buat sebuah fungsi dengan parameter request yaitu show_xml_by_id untuk XML dan show_json_by_id untuk JSON. Setelah itu di dalam setiap fungsi, tambahkan data = Item.objects.filter(pk=id). Dibawahnya ditambahkan kode return HttpResponse(serializers.serialize("xml", data), content_type="application/xml") untuk XML dan return HttpResponse(serializers.serialize("json", data), content_type="application/json") untuk JSON. Kemudian, tambahkan import show_xml_by_id dan show_json_by_id pada file urls.py yang ada pada folder main. Kemudian, saya menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi yaitu path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id') dan path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),. Setelah itu, saya menjalankan perintah python manage.py runserver dan membuka http://localhost:8000/xml/[id] dan http://localhost:8000/xml/[id] . id berisi sebuah bilangan 1,2,3,..n dan seterusnya sesuai dengan berapa n data yang saya input. 
+
+5. Adapun kelima URL berhasil saya akses di Postman dan saya akan melampirkan dokumentasinya
+
+A. Views HTML
+![html](Screenshoot_HTML.png "Views HTML")
+
+B. Views XML
+![xml](Screenshoot_XML.png "Views XML")
+
+C. Views JSON
+![json](Screenshoot_JSON.png "Views JSON")
+
+D. Views XML by ID
+![xml by id](Screenshoot_XML_id.png "Views XML by ID")
+
+E. Views JSON by ID
+![json by id](Screenshoot_JSON_id.png "Views JSON by ID")
