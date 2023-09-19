@@ -202,18 +202,18 @@ Selanjutnya, saya akan mengembalikan data dalam bentuk JSON. Dengan cara yang sa
 Selanjutnya saya akan mengembalikan data berdasarkan ID baik dalam bentuk XML ataupun JSON. Pertama, saya membuka views.py yang ada pada folder main dan buat sebuah fungsi dengan parameter request yaitu show_xml_by_id untuk XML dan show_json_by_id untuk JSON. Setelah itu di dalam setiap fungsi, tambahkan data = Item.objects.filter(pk=id). Dibawahnya ditambahkan kode return HttpResponse(serializers.serialize("xml", data), content_type="application/xml") untuk XML dan return HttpResponse(serializers.serialize("json", data), content_type="application/json") untuk JSON. Kemudian, tambahkan import show_xml_by_id dan show_json_by_id pada file urls.py yang ada pada folder main. Kemudian, saya menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi yaitu path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id') dan path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),. Setelah itu, saya menjalankan perintah python manage.py runserver dan membuka http://localhost:8000/xml/[id] dan http://localhost:8000/xml/[id] . id berisi sebuah bilangan 1,2,3,..n dan seterusnya sesuai dengan berapa n data yang saya input. 
 
 5. Adapun kelima URL berhasil saya akses di Postman dan saya akan melampirkan dokumentasinya
-
-A. Views HTML
+Berikut adalah screenshoot dari hasil akses URL pada Postman
+A. HTML
 ![html](Screenshoot_HTML.png "Views HTML")
 
-B. Views XML
+B. XML
 ![xml](Screenshoot_XML.png "Views XML")
 
-C. Views JSON
+C. JSON
 ![json](Screenshoot_JSON.png "Views JSON")
 
-D. Views XML by ID
+D. XML by ID
 ![xml by id](Screenshoot_XML_id.png "Views XML by ID")
 
-E. Views JSON by ID
+E. JSON by ID
 ![json by id](Screenshoot_JSON_id.png "Views JSON by ID")
