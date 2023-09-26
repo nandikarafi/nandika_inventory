@@ -1,4 +1,4 @@
-<!-- Nandika Rafi Atallah
+Nandika Rafi Atallah
 PBP C
 2206082745
 Tugas 2
@@ -469,6 +469,6 @@ git add .
 git commit -m "Selesai mengerjakan Tugas 4"
 git push -u origin main
 
-Itulah beberapa step yang saya lakukan pada tugas 4 ini. Sekian dari saya, terima kasih.  -->
+Itulah beberapa step yang saya lakukan pada tugas 4 ini. Sekian dari saya, terima kasih. 
  
 
