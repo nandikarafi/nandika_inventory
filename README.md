@@ -1,6 +1,6 @@
-Nandika Rafi Atallah
-PBP C
-2206082745
+## Nandika Rafi Atallah
+## PBP C
+## 2206082745
 Tugas 2
 tautan : https://sectask-nandika.adaptable.app/main/
 
@@ -8,6 +8,7 @@ tautan : https://sectask-nandika.adaptable.app/main/
 Pertama, sebelum proyek Django dibuat, saya terlebih dahulu membuat direktori baru dengan nama nandika_inventory. Direktori tersebut saya buat untuk menyimpan data-data tugas 2 saya. 
 
 Selanjutnya saya membuka command prompt dari direktori nandika_inventory untuk mengaktifkan virtual environment. Tujuan dari pengaktifan virtual environment adalah mengisolasi package serta dependencies dari aplikasi sehingga tidak terjadi tabrakan dengan versi lain yang ada pada komputer. Adapun cara pengaktifannya dengan perintah berikut.
+
 env\Scripts\activate.bat
 
 Setelah itu, saya akan menyiapkan dependencies yang tujuannya agar suatu perangkat lunak dapat berfungsi dengan baik termasuk library, framework, atau package. Dependencies yang saya buat saya letakkan pada berkas requirements.txt yang ada di dalam direktori nandika_inventory.
@@ -19,6 +20,7 @@ whitenoise
 psycopg2-binary
 requests
 urllib3
+
 Setelah isinya dibuat, dependencies tersebut harus dipasang dengan menjalankan perintah di command prompt 
 pip install -r requirements.txt
 
@@ -37,6 +39,7 @@ Tahap kedua yang saya lakukan adalah membuat aplikasi main dalam proyek nandika_
 python manage.py startapp main
 Setelah itu, saya harus mendaftarkan aplikasi main ke dalam proyek dengan membuka berkas settings.py di dalam direktori proyek nandika_project. Saya harus menemukan variable INSTALLED_APPS dan menambahkan ‘main’ ke dalam daftar aplikasi yang ada.
 Setelah itu saya harus mengatur routing URL agar aplikasi main yang telah saya buat dapat diakes melalui peramban web dengan membuat berkas urls.py di dalam direktori main. Adapun isi dari urls.py diisi dengan kode berikut.
+
 from django.urls import path
 from main.views import show_main
 
@@ -51,14 +54,17 @@ Selanjutnya, saya akan mengonfigurasi routing URL protek dengan menambahkan rute
 from django.urls import path, include
 dengan tujuan untuk mengimpore rute URL dari aplikasi lain ke dalam berkas urls.py.
 Saya juga menambahkan rute URL seperti berikut.
+
 urlpatterns = [
     ...
     path('main/', include('main.urls')),
     ...
 ]
+
 dengan tujuan untuk mendefinisikan dalam berkasi urls.py aplikasi main. 
 
 Kemudian, saya mengisi berkas models.py untuk mendefinisikan atribut dengan tipe datanya. Adapun isi berkas models.py saya sebagai berikut.
+
 from django.db import models
 
 class Item(models.Model):
