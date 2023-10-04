@@ -526,6 +526,7 @@ Margin adalah ruang kosong di sekitar elemen HTML. Ini adalah jarak antara eleme
 Padding adalah ruang kosong di dalam elemen HTML. Ini adalah jarak antara tepi elemen dan kontennya. Padding digunakan untuk menambahkan ruang kosong di sekitar konten elemen HTML atau untuk memperbesar atau memperkecil elemen itu sendiri. Nilai default untuk padding juga adalah 0, yang berarti jika nilai padding tidak ditentukan, tidak ada ruang kosong yang akan diciptakan. Berbeda dengan margin, padding hanya mempengaruhi elemen yang diaplikasikan pada padding tersebut
 
 Jadi, perbedaan utama antara margin dan padding adalah posisi relatif terhadap elemen dan pengaruhnya pada ukuran elemen. Margin menciptakan ruang kosong di luar elemen, sementara padding menciptakan ruang kosong di dalam elemen.
+
 # 4.	Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
 
 Tailwind CSS adalah framework CSS yang berfokus pada utility-first, yang memungkinkan membangun antarmuka pengguna yang kustom dengan cepat. Sebagai framework yang bersifat low-level, Tailwind sangat dapat dikustomisasi dan menyediakan semua blok bangunan yang dibutuhkan untuk membuat desain yang unik tanpa gaya yang mengganggu yang sulit.
