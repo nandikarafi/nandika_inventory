@@ -496,9 +496,9 @@ git push -u origin main
 Itulah beberapa step yang saya lakukan pada tugas 4 ini. Sekian dari saya, terima kasih. 
  
 
-## Tugas 5
+# Tugas 5
 
-# 1.	Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+## 1.	Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 
 Element selector dalam CSS digunakan untuk memilih elemen HTML yang ingin kita beri style. Adapun beberapa jenis element selector sebagai berikut.
 -	Type Selector, Selector ini digunakan untuk memilih semua elemen yang memiliki tipe tertentu. Misalnya, selector tersebut didefinisikan dengan  p untuk memilih semua elemen <p>
@@ -508,7 +508,7 @@ Element selector dalam CSS digunakan untuk memilih elemen HTML yang ingin kita b
 -	Pseudo-class Selector, Selector ini digunakan untuk memberikan gaya pada elemen berdasarkan statusnya. Misalnya, kita bisa menggunakan :hover untuk mengubah gaya elemen ketika kursor berada di atas elemen tersebut
 -	Group Selector: Selector ini digunakan untuk memilih beberapa elemen dan memberikan gaya yang sama kepada semua elemen tersebut. Dideklarasikan dengan tanda koma “,”. Contohnya h1,h2,li { …..} .
 
-# 2.	Jelaskan HTML5 Tag yang kamu ketahui.
+## 2.	Jelaskan HTML5 Tag yang kamu ketahui.
 HTML5 Tag yang saya ketahui sebagai berikut.
 -	<html>:  Tag ini bertindak sebagai container untuk setiap elemen lainnya dalam dokumen kecuali tag <!DOCTYPE html>.
 -	<head> digunakan untuk menyimpan informasi tentang dokumen web, yang tidak ditampilkan secara langsung pada halaman web atau yang disebut Metadata. Metadata ini bisa berupa judul halaman atau link ke file CSS eksternal.
@@ -519,7 +519,7 @@ HTML5 Tag yang saya ketahui sebagai berikut.
 -	<button>: Tag ini digunakan untuk membuat tombol yang dapat diklik dalam HTML.
 -	<style>:Tag ini digunakan untuk mendefinisikan informasi gaya untuk dokumen HTML, dan biasanya ditempatkan di dalam bagian <head> dari dokumen.
 
-# 3.	Jelaskan perbedaan antara margin dan padding.
+## 3.	Jelaskan perbedaan antara margin dan padding.
 
 Margin adalah ruang kosong di sekitar elemen HTML. Ini adalah jarak antara elemen dan elemen lainnya atau tepi browser. Margin dapat digunakan untuk menambahkan ruang kosong di sekitar elemen HTML atau untuk mengubah posisi elemen relatif terhadap elemen lainnya. Nilai default untuk margin adalah 0, yang berarti jika nilai margin tidak ditentukan, tidak ada ruang kosong yang akan diciptakan. Margin dapat mempengaruhi tata letak keseluruhan situs web. Ketika margin ditambahkan pada elemen, elemen tersebut akan diposisikan relatif terhadap elemen lain di sekitarnya, sehingga dapat memengaruhi tata letak keseluruhan situs web. 
 
@@ -527,7 +527,7 @@ Padding adalah ruang kosong di dalam elemen HTML. Ini adalah jarak antara tepi e
 
 Jadi, perbedaan utama antara margin dan padding adalah posisi relatif terhadap elemen dan pengaruhnya pada ukuran elemen. Margin menciptakan ruang kosong di luar elemen, sementara padding menciptakan ruang kosong di dalam elemen.
 
-# 4.	Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+## 4.	Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
 
 Tailwind CSS adalah framework CSS yang berfokus pada utility-first, yang memungkinkan membangun antarmuka pengguna yang kustom dengan cepat. Sebagai framework yang bersifat low-level, Tailwind sangat dapat dikustomisasi dan menyediakan semua blok bangunan yang dibutuhkan untuk membuat desain yang unik tanpa gaya yang mengganggu yang sulit.
 
@@ -535,7 +535,7 @@ Bootstrap adalah framework CSS yang berbasis komponen dan membantu dalam mendesa
 
 Dalam menggunakan Bootstrap atau Tailwind, Jika proyek tidak berbeda banyak dari layout yang umum, Bootstrap menjadi framework lebih baik digunakan. Semantara itu, jika proyek memerlukan banyak kustomisasi front-end, tidak mengikuti layout umum, , Tailwind lebih baik digunakan. 
 
-# 5.	Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step.
+## 5.	Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step.
 
 Pertama, saya ke file base.html yang telah saya buat. Kemudian, saya menambahkan bootsrap CSS dan juga JS dengan cara seperti berikut.
 ```
