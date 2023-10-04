@@ -496,3 +496,243 @@ git push -u origin main
 Itulah beberapa step yang saya lakukan pada tugas 4 ini. Sekian dari saya, terima kasih. 
  
 
+## Tugas 5
+
+# 1.	Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+
+Element selector dalam CSS digunakan untuk memilih elemen HTML yang ingin kita beri style. Adapun beberapa jenis element selector sebagai berikut.
+-	Type Selector, Selector ini digunakan untuk memilih semua elemen yang memiliki tipe tertentu. Misalnya, selector tersebut didefinisikan dengan  p untuk memilih semua elemen <p>
+-	Universal Selector, Selector ini digunakan untuk memilih semua elemen di halaman. Dideklarasikan dengan tanda “*”
+-	Class Selector, Selector ini digunakan untuk memilih semua elemen yang memiliki atribut class dengan nilai tertentu. Dideklarasikan dengan tanda titik “.” sebelum nama class
+-	Attribute Selector, Selector ini digunakan untuk memilih elemen berdasarkan atributnya.
+-	Pseudo-class Selector, Selector ini digunakan untuk memberikan gaya pada elemen berdasarkan statusnya. Misalnya, kita bisa menggunakan :hover untuk mengubah gaya elemen ketika kursor berada di atas elemen tersebut
+-	Group Selector: Selector ini digunakan untuk memilih beberapa elemen dan memberikan gaya yang sama kepada semua elemen tersebut. Dideklarasikan dengan tanda koma “,”. Contohnya h1,h2,li { …..} .
+
+# 2.	Jelaskan HTML5 Tag yang kamu ketahui.
+HTML5 Tag yang saya ketahui sebagai berikut.
+-	<html>:  Tag ini bertindak sebagai container untuk setiap elemen lainnya dalam dokumen kecuali tag <!DOCTYPE html>.
+-	<head> digunakan untuk menyimpan informasi tentang dokumen web, yang tidak ditampilkan secara langsung pada halaman web atau yang disebut Metadata. Metadata ini bisa berupa judul halaman atau link ke file CSS eksternal.
+-	<title>: Tag ini mendefinisikan judul dokumen yang ditampilkan di bar judul browse.
+-	<h1> s/d <h6>: Tag ini digunakan untuk mendefinisikan judul. <h1> mendefinisikan judul yang paling penting dan <h6> mendefinisikan judul yang tidak terlalu penting.
+-	<p>: Tag ini digunakan untuk mendefinisikan paragraph.
+-	<form>: Tag ini digunakan untuk mendefinisikan formulir dalam dokumen HTML untuk pengajuan informasi pengguna.
+-	<button>: Tag ini digunakan untuk membuat tombol yang dapat diklik dalam HTML.
+-	<style>:Tag ini digunakan untuk mendefinisikan informasi gaya untuk dokumen HTML, dan biasanya ditempatkan di dalam bagian <head> dari dokumen.
+
+# 3.	Jelaskan perbedaan antara margin dan padding.
+
+Margin adalah ruang kosong di sekitar elemen HTML. Ini adalah jarak antara elemen dan elemen lainnya atau tepi browser. Margin dapat digunakan untuk menambahkan ruang kosong di sekitar elemen HTML atau untuk mengubah posisi elemen relatif terhadap elemen lainnya. Nilai default untuk margin adalah 0, yang berarti jika nilai margin tidak ditentukan, tidak ada ruang kosong yang akan diciptakan. Margin dapat mempengaruhi tata letak keseluruhan situs web. Ketika margin ditambahkan pada elemen, elemen tersebut akan diposisikan relatif terhadap elemen lain di sekitarnya, sehingga dapat memengaruhi tata letak keseluruhan situs web. 
+
+Padding adalah ruang kosong di dalam elemen HTML. Ini adalah jarak antara tepi elemen dan kontennya. Padding digunakan untuk menambahkan ruang kosong di sekitar konten elemen HTML atau untuk memperbesar atau memperkecil elemen itu sendiri. Nilai default untuk padding juga adalah 0, yang berarti jika nilai padding tidak ditentukan, tidak ada ruang kosong yang akan diciptakan. Berbeda dengan margin, padding hanya mempengaruhi elemen yang diaplikasikan pada padding tersebut
+
+Jadi, perbedaan utama antara margin dan padding adalah posisi relatif terhadap elemen dan pengaruhnya pada ukuran elemen. Margin menciptakan ruang kosong di luar elemen, sementara padding menciptakan ruang kosong di dalam elemen.
+# 4.	Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+Tailwind CSS adalah framework CSS yang berfokus pada utility-first, yang memungkinkan membangun antarmuka pengguna yang kustom dengan cepat. Sebagai framework yang bersifat low-level, Tailwind sangat dapat dikustomisasi dan menyediakan semua blok bangunan yang dibutuhkan untuk membuat desain yang unik tanpa gaya yang mengganggu yang sulit.
+
+Bootstrap adalah framework CSS yang berbasis komponen dan membantu dalam mendesain dan mengembangkan template web dengan cepat. Bootstrap mudah dipelajari dan menjaga konsistensi di berbagai perangkat dan browser.
+
+Dalam menggunakan Bootstrap atau Tailwind, Jika proyek tidak berbeda banyak dari layout yang umum, Bootstrap menjadi framework lebih baik digunakan. Semantara itu, jika proyek memerlukan banyak kustomisasi front-end, tidak mengikuti layout umum, , Tailwind lebih baik digunakan. 
+
+# 5.	Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step.
+
+Pertama, saya ke file base.html yang telah saya buat. Kemudian, saya menambahkan bootsrap CSS dan juga JS dengan cara seperti berikut.
+```
+<head>
+    {% block meta %}
+        ...
+    {% endblock meta %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+```
+
+Selanjutnya, karena saya belum membuat halaman edit_product, saya harus membuatnya terlebih dahulu. saya membuat file baru pada folder templates edit_product.html. Kemudian, filenya saya isi sebagai berikut.
+```
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Edit Product</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Edit Product"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
+```
+Kemudian saya membuka file urls.py dan menambahkan import dan path. import yang saya tambahkan adalah 
+```
+from main.views import edit_product
+```
+
+lalu pada path, saya tambahkan
+```
+path('edit-product/<int:id>', edit_product, name='edit_product'),
+```
+
+Selanjutnya, saya ke file views.py yang ada pada folder main dan menambahkan fungsi edit_product
+```
+def edit_product(request, id):
+
+    # Get product berdasarkan ID
+    product = Item.objects.get(pk = id)
+
+    # Set product sebagai instance dari form
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+```
+
+Lalu saya menambahkan fungsi delete_product di bawahnya seperti yang ada file saya. Lalu pada urls.py saya menambahkan import fungsi tersebut. Kemudian, saya menambahkan path 
+```
+path('delete/<int:id>', delete_product, name='delete_product'),
+```
+
+Setelah itu, saya akan memodifikasi halaman register, login, create_product, dan edit product. Sebelumnya, saya sudah membuat CSS pada halaman main.html. Maka saya perlu menyesuaikan CSS setiap halaman yang ingin saya modifikasi tampilannya. Adapun cara mendesain html adalah  buatlah tag html bernama "<style>". Lalu pada tag yang saya edit, saya dapat menambah nama class sehingga dapat diakes pada CSS.
+
+```
+{% block meta %}
+    <title>Login</title>
+
+{% endblock meta %}
+
+{% block content %}
+
+<style>
+    body {
+        background-color: peachpuff;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .center-content {
+        text-align: center;
+        padding-top: 50px; /* Atur jarak dari atas ke bawah sesuai kebutuhan */
+    }
+
+    .login {
+        background-color: peachpuff;  
+        padding: 20px;
+        border: 1px solid brown; /* Garis pinggir form login */
+        width: 50%; /* Lebar form login */
+        margin: 50px auto 0; /* Posisi form login di tengah halaman */
+        text-align: center; 
+    }
+
+    h1 {
+        font-size: 35px;
+        color: chocolate;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        border: 1px solid chocolate; /* Garis pinggir input */
+        background-color: peachpuff; 
+    }
+
+    a {
+        color: chocolate; /* Warna tautan Register Now */
+    }
+
+    .login_btn {
+        background-color: chocolate; /* Warna latar belakang tombol Login */
+        color: peachpuff; 
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px; 
+        display: inline-block; /* Agar tombol tidak menempati seluruh lebar*/
+    }
+</style>
+
+<div class="center-content">
+    <div class="login">
+        <h1>Login</h1>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Username: </td>
+                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                </tr>
+                        
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input class="btn login_btn" type="submit" value="Login"></td>
+                </tr>
+            </table>
+        </form>
+
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}     
+        
+        Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+    </div>
+</div>
+
+{% endblock content %}
+
+```
+
+berikut adalah contoh halaman login saya. Saya mendefinisikan class center-content untuk mengatur posisi tengah dan paddling top yaitu jarak dengan atas. Lalu saya juga bisa mendesain, body, form control, table, dan login. Disana saya definisikan sesuai keinginan saya seperti background color, margin, padding, border, width, cursor, dan sebagainya. Dalam mengecek desain, saya terlebih dahulu harus menjalankan perintah berikut
+```
+python manage.py runserver
+``````
+
+sehingga saya dapat mengakses localhost:8000 saya. Ketika saya melakukan desain pada halaman yang lain, saya harus memastikan keselrasan antara halaman yang satu dengan yang lainnya. Makanya, saya menggunakan warna background yang sama agar terlihat kelarasannya. Ada satu hal yang lupa saya jelaskan. Dikarenakan saya menambah tombol edit, dan delete pada halaman utama saya, saya harus menambah tombol edit dan delete pada main.html saya. 
+```
+<tr>
+    <td>{{ product.name }}</td>
+    <td>{{ product.amount }}</td>
+    <td>{{ product.price }}</td>
+    <td>{{ product.description }}</td>
+    <td>
+    <a href="{% url 'main:edit_product' product.pk %}">
+        <button class="login-button">
+            Edit
+        </button>
+    </a>
+    <a href="{% url 'main:delete_product' product.pk %}">
+        <button class="login-button">
+            Delete
+        </button>
+    </a>
+</tr>
+```
+
+Jadi, sekian yang dapat saya jelaskan. Terima kasih. 

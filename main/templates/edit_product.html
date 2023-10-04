@@ -1,43 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <style>
+    
     body {
         background-color: peachpuff; 
         font-family: Arial, Helvetica, sans-serif; 
         color: chocolate; 
         margin: 0;
         padding: 0;
-        display: flex; /* Menggunakan flexbox untuk mengatur tata letak */
-        flex-direction: column; /* Menata konten dalam kolom */
-        align-items: center; /* Mengatur konten di tengah secara horizontal */
-        justify-content: center; /* Mengatur konten di tengah secara vertikal */
-        height: 100vh; /* Mengisi tinggi seluruh viewport */
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        height: 100vh; 
     }
 
 
     h1 {
         font-size: 35px;
         margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .center-content {
-        text-align: center; 
-        width: 100%; 
     }
 
     form {
-        width: 60%;
+        width: 50%;
         margin: 0 auto;
-        text-align: center; /* Mengatur teks dalam formasi tengah */
+        text-align: center; 
     }
 
     table {
-        width: 60%;
+        width: 100%;
         border-collapse: collapse;
-        margin: 0 auto;
-        text-align: center;
     }
 
     th, td {
@@ -57,33 +51,31 @@
 
     input[type="text"], input[type="number"], textarea 
     {
-        background-color: peachpuff; 
+        background-color: peachpuff;
         border: 1px solid chocolate; 
         border-radius: 10px; 
-        padding: 10px; /* Mengatur jarak antara isi input dan batas input */
+        padding: 10px; 
     }
 
     textarea[name="description"] {
         height: 100px; /* Atur tinggi kotak description sesuai kebutuhan Anda */
     }
 </style>
-<div class="center-content">
-    <h1>Add New Product</h1>
-    <form method="POST">
+
+<h1>Edit Product</h1>
+
+<form method="POST">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
         <tr>
             <td></td>
             <td>
-                <input type="submit" value="Add Product"/>
+                <input type="submit" value="Edit Product"/>
             </td>
         </tr>
     </table>
-    </form>
-</div>
-
-
-
+</form>
 
 {% endblock %}
+

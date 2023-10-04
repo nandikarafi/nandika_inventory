@@ -6,29 +6,87 @@
 
 {% block content %}  
 
-<div class = "login">
-    
-    <h1>Register</h1>  
+<style>
+    body {
+        background-color: peachpuff;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
+    .center-content {
+        text-align: center;
+        padding-top: 50px; /* Atur jarak dari atas ke bawah sesuai kebutuhan */
+    }
+
+    .login {
+        background-color: peachpuff;
+        padding: 20px;
+        border: 1px solid brown;
+        width: 50%;
+        margin: 30px auto 0; /* Posisi form login di tengah halaman */
+    }
+
+    h1 {
+        font-size: 35px;
+        color: chocolate;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        border: 1px solid chocolate;
+        background-color: peachpuff; 
+    }
+
+    .login_btn {
+        background-color: chocolate;
+        color: peachpuff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    a {
+        color: chocolate;
+    }
+
+    /* Gaya untuk pesan error di bawah password */
+    .password-syarat {
+        font-size: 16px; /* Atur ukuran font sesuai kebutuhan */
+        color: red; /* Atur warna teks sesuai kebutuhan */
+        text-align: left; /* Posisi teks pesan ke kiri */
+        margin-left: 10px; /* Jarak kiri sesuai kebutuhan */
+    }
+</style>
+
+<div class="center-content">
+    <div class="login">
+        <h1>Register</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+                <tr>
                     <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
+                    <td><input class="btn login_btn" type="submit" name="submit" value="Daftar"/></td>
+                </tr>
+            </table>
         </form>
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="password-syarat">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock content %}

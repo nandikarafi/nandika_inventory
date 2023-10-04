@@ -2,44 +2,99 @@
 
 {% block meta %}
     <title>Login</title>
+
 {% endblock meta %}
 
 {% block content %}
 
-<div class = "login">
+<style>
+    body {
+        background-color: peachpuff;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-    <h1>Login</h1>
+    .center-content {
+        text-align: center;
+        padding-top: 50px; /* Atur jarak dari atas ke bawah sesuai kebutuhan */
+    }
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+    .login {
+        background-color: peachpuff;  
+        padding: 20px;
+        border: 1px solid brown; /* Garis pinggir form login */
+        width: 50%; /* Lebar form login */
+        margin: 50px auto 0; /* Posisi form login di tengah halaman */
+        text-align: center; 
+    }
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+    h1 {
+        font-size: 35px;
+        color: chocolate;
+    }
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
+    table {
+        width: 100%;
+    }
+
+    
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        border: 1px solid chocolate; /* Garis pinggir input */
+        background-color: peachpuff; 
+    }
+
+    a {
+        color: chocolate; /* Warna tautan Register Now */
+    }
+
+    .login_btn {
+        background-color: chocolate; /* Warna latar belakang tombol Login */
+        color: peachpuff; 
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px; 
+        display: inline-block; /* Agar tombol tidak menempati seluruh lebar*/
+    }
+</style>
+
+<div class="center-content">
+    <div class="login">
+        <h1>Login</h1>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Username: </td>
+                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                </tr>
+                        
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input class="btn login_btn" type="submit" value="Login"></td>
+                </tr>
+            </table>
+        </form>
+
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}     
         
-    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
-
+        Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+    </div>
 </div>
 
 {% endblock content %}
