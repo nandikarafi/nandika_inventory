@@ -84,62 +84,75 @@ color: black;
     border-radius: 10px; /* Menentukan radius sudut */
 }
 
+.form-label {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        color: lightcoral;
+    }
 
+.form-control {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: black;
+}
 
 </style>
 </head>
 <body>
 
-<div class="table-container">
+<div class="table-container"></table>
   <h1 id="text"><b>Nandika's Inventories</b></h1>
   <h2 id="text">Perlengkapan Sekolah Nandika</h2>
   <h5 id="text">Nama Owner : </h5>
   <p id="text">{{ name }}</p>
   <h5 id="text">Kelas : </h5>
   <p id="text">{{ kelas }}</p>
-  <table class="product-table">
-    <tr>
-        <h5>Tabel Penyimpanan Nandika's Inventories</h5>
-    </tr>
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-    <thead>
-      <tr>
-          <th>Nama Barang</th>
-          <th>Jumlah</th>
-          <th>Harga</th>
-          <th>Deskripsi</th>
-          <th>Pengaturan</th>
-      </tr>
-  </thead>
-    {% for product in products %}
-        <tr>
-          <td>{{ product.name }}</td>
-          <td>{{ product.amount }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.description }}</td>
-          <td>
-            <a href="{% url 'main:edit_product' product.pk %}">
-                <button class="login-button">
-                    Edit
-                </button>
-            </a>
-            <a href="{% url 'main:delete_product' product.pk %}">
-                <button class="login-button">
-                    Delete
-                </button>
-            </a>
-        </tr>
-    {% endfor %}
-</table>
+  <table id="product_table" class="product-table"></table>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary login-button" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary login-button" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<br />
+    <br />
+    <button type="button" class="btn btn-primary login-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Product</button>
 
-<a href="{% url 'main:create_product' %}">
+<!-- <a href="{% url 'main:create_product' %}">
     <button class="login-button">
         Add New Product
     </button>
-</a>
+</a> -->
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 <a href="{% url 'main:logout' %}">
     <button class="login-button">
@@ -151,4 +164,67 @@ color: black;
 
 </body>
 </html>
+<script>
+    async function getProducts() {
+        // return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+        const response = await fetch("{% url 'main:get_product_json' %}")
+        const data = await response.json()
+        console.log(data)
+        return data
+    }
+
+    async function refreshProducts() {
+        document.getElementById("product_table").innerHTML = ""
+        const products = await getProducts()
+        if (products.length === 0) {
+        // Jika daftar produk kosong, keluar dari fungsi
+        return;
+        }
+
+        let htmlString = `<tr>
+            <th>Nama</th>
+            <th>Jumlah</th>
+            <th>Harga</th>
+            <th>Deskripsi</th>
+            <th>Pengaturan</th>
+        </tr>`
+        products.forEach((item) => {
+            console.log(item)
+            let editUrl = `{% url 'main:edit_product' id=0 %}`.replace('0', item.pk)
+            let deleteUrl = `{% url 'main:delete_product' id=0 %}`.replace('0', item.pk)
+            htmlString += `\n<tr>
+            <td>${item.fields.name}</td>
+            <td>${item.fields.amount}</td>
+            <td>${item.fields.price}</td>
+            <td>${item.fields.description}</td>
+            <td>
+            <a href="${editUrl}">
+            <button class="login-button">Edit</button>
+            </a>
+            <a href="${deleteUrl}">
+            <button class="login-button">Delete</button>
+            </a>
+            </td>
+        </tr>` 
+        })
+        
+        document.getElementById("product_table").innerHTML = htmlString
+    }
+
+    refreshProducts()
+
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        })
+        .then(refreshProducts)
+        .catch(error => console.error('Error:', error));
+        document.getElementById("form").reset()
+        return false
+    }
+
+document.getElementById("button_add").onclick = addProduct
+
+</script>
 {% endblock content %}
