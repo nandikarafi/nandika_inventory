@@ -9,12 +9,12 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from pathlib import Path
-
+# import environ
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-env = environ.Env()
+# env = environ.Env()
 
 
 # Quick-start development settings - unsuitable for production
@@ -22,7 +22,7 @@ env = environ.Env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-kuz@ybsdj7k6vc5^&&g8xt#q+e0-x1h6^8k9dz&rt)^n0m8%c3'
-PRODUCTION = env.bool('PRODUCTION', False)
+# PRODUCTION = env.bool('PRODUCTION', False)
 
 
 
@@ -32,10 +32,8 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
-import os  # Tambahkan kode berikut
 
 # Application definition
-import environ  # Tambahkan kode berikut
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -89,11 +87,11 @@ DATABASES = {
 }
 
 # Set database settings automatically using DATABASE_URL.
-if PRODUCTION:
-    DATABASES = {
-        'default': env.db('DATABASE_URL')
-    }
-    DATABASES["default"]["ATOMIC_REQUESTS"] = True
+# if PRODUCTION:
+#     DATABASES = {
+#         'default': env.db('DATABASE_URL')
+#     }
+#     DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 
 # Password validation
