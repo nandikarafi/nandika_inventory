@@ -1,4 +1,6 @@
 import datetime
+from itertools import product
+import json
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -137,4 +139,25 @@ def add_product_ajax(request):
     
     return HttpResponseNotFound()
     
-   
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_product = Item.objects.create(
+            user = request.user,
+            name = data["name"],
+            price = int(data["price"]),
+            amount = int(data["amount"]),
+            description = data["description"]
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+
+
